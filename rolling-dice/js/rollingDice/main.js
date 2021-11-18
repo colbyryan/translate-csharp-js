@@ -2,37 +2,24 @@
 console.log("Let's roll some dice, baby!")
 console.log("---------------------------")
 
+const Roll = (min, max) => {
+    min = Math.ceil(min)
+    max = Math.floor(max)
+    return Math.floor(Math.random() * (max - min + 1)) + min
+}
+
+let dieStringArray = ["dummy", "one", "two", "three", "four", "five", "six"]
 
 for (let i = 0; i < 10; i++) {
-    die1 = Roll();
-    die2 = Roll();
+    die1 = Roll(1, 6);
+    die2 = Roll(1, 6);
 
-    let message = `${die1} + ${die2} == ${die1.Value + die2.Value}`
-    if (die1.Value === die2.Value) {
+    let message = `${dieStringArray[die1]} + ${dieStringArray[die2]} = ${die1 + die2}`
+    if (die1 === die2) {
         message += " DOUBLES!"
     }
 
     console.log(message)
 }
 
-const dieRoll = () => {
-    let dieValue = new Random().Next(1, 6)
-    let die = new Die(dieValue)
-    return (
-        die
-    )
-}
 
-
-const createDie = (value) => {
-    return {
-        value,
-        toString: () => {
-            let dieString = "unknown"
-            let dieStringArray = ["dummy", "one", "two", "three", "four", "five", "six"]
-            dieString = dieStringArray[this.value]
-            return dieString
-        }
-    }
-
-}
